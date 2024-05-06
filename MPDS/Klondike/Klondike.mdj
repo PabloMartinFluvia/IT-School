@@ -13670,6 +13670,19 @@
 											"headQualifiersCompartment": {
 												"$ref": "AAAAAAGPKVNc2j3U1eE="
 											}
+										},
+										{
+											"_type": "UMLTextBoxView",
+											"_id": "AAAAAAGPTaSojBjdBC0=",
+											"_parent": {
+												"$ref": "AAAAAAGPKOCizjLoceE="
+											},
+											"font": "Arial;13;0",
+											"left": 80,
+											"top": 1296,
+											"width": 496,
+											"height": 183,
+											"text": "Review\n1) Falta relació d'us entre els moviments i les cartes. \n2) Falta convertir les accions en events.\n3) Falta eliminar els conceptes NO relevants (score, desfer, barajar, diferents nivells de dificultat)\n4) Canviar nom de Stack -> Pile"
 										}
 									]
 								},
