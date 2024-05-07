@@ -1,0 +1,18 @@
+@startuml
+
+state e1
+state c1 <<choice>>
+state e2
+state c2 <<choice>>
+
+[*] --> e1
+e1 --> c1 : place token playerA
+c1 --> [*] : [playerA wins]
+c1 --> e2 : [false]
+e2 --> c2 : place token playerB
+c2 --> [*]: [board is full & !playerBWins]
+c2 --> [*] : [playerB wins]
+c2 --> e1 : [false]
+
+
+@enduml

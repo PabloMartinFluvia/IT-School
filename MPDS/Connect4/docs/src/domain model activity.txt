@@ -1,0 +1,13 @@
+@startuml
+start
+
+repeat
+    :player A places token;
+    if(isConnect4PlayerA) then (false)
+        :player B places token;
+    endif
+repeat while (existWinner OR isBoardFull) is (false)
+
+stop
+
+@enduml
