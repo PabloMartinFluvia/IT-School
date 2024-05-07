@@ -1,0 +1,67 @@
+@startuml
+
+object ":Connect4" as connect4
+object ":Board" as board
+
+'players'
+object ":Player" as playerRed{
+Color = red
+}
+object ": Player" as playerYellow{
+Color = yellow
+}
+
+'squares'
+object ":Square" as square11{
+row = 1
+column = 1
+token = empty
+}
+object ":Square" as square17{
+row = 1
+column = 7
+token = empty
+}
+object ":Square" as square61{
+row = 6
+column = 1
+token = empty
+}
+object ":Square" as square67{
+row = 6
+column = 7
+token = empty
+}
+
+'tokens'
+object ":Token" as tokenRed{
+Color = red
+}
+object ":Token" as tokenYellow{
+Color = yellow
+}
+
+'connect4 dependencies'
+connect4 *-down-> board
+connect4 *-down-> playerRed
+connect4 *-down-> playerYellow
+
+'board dependencies'
+board *-down-> square11
+board *-down-> square17
+board *-down-> square61
+board *-down-> square67
+
+'player dependencies'
+playerRed -down-> "21" tokenRed
+playerYellow -down-> "21" tokenYellow
+
+note as NEmpty
+All 6x7 board's squares are empty
+end note
+square11..NEmpty
+square17..NEmpty
+square61..NEmpty
+square67..NEmpty
+
+@enduml

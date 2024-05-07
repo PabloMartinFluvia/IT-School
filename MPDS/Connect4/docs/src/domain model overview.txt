@@ -1,0 +1,67 @@
+@startuml
+
+class Connect4
+'connect4 main classes:'
+class Player
+class Turn
+class Board
+class Token
+
+class Square
+
+'goals'
+abstract class Goal
+class InRow
+class InDiagonal
+class InColumn
+class InInverseDiagonal
+
+'events'
+class TokenPlaced
+
+'token & player color'
+abstract class Color
+class Red
+class Yellow
+
+'connect4 composites'
+Connect4 *-down-> "2" Player
+Connect4 *-down-> Turn
+Connect4 *-down-> Board
+Connect4 *-down-> "0..42" TokenPlaced
+Connect4 *-down-> "42" Token
+
+'player dependencies'
+Player -right-> Turn
+Player o-down-> Goal
+Player .down.-> "0..21" TokenPlaced
+Player -right-> "21" Token
+Player o-down-> Color
+
+'board dependencies'
+Board *-down-> "6*7" Square
+
+'token placed event dependencies'
+TokenPlaced -right-> "0..1" Goal
+TokenPlaced -right-> Square : target
+
+'goal dependencies'
+Goal -right-> "4" Square
+
+'square dependencies'
+Square o-down-> "0..1" Token
+
+'goal children'
+Goal <|-down- InRow
+Goal <|-down- InColumn
+Goal <|-down- InDiagonal
+Goal <|-down- InInverseDiagonal
+
+'color children'
+Color <|-down- Red
+Color <|-down- Yellow
+
+'token dependencies'
+Token o-down-> Color
+
+@enduml
