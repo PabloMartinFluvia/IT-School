@@ -1,0 +1,24 @@
+@startuml
+
+start
+
+repeat
+    if (isWasteWithCards) then (true)
+        :restore deck;
+    endif
+
+    while (isMovementAvailable) is (true)
+        if (isMoveToFoundationAvailable & ! isMovementIgnored) then (true)
+            :MoveToFoundation;
+        elseif (isMoveToPileAvailable & ! isMovementIgnored) then (true)
+            :MoveToPile;
+        else
+            :MoveFromDeckToWaste;
+        endif
+    endwhile
+
+repeat while (isWin | isSurrender) is (false)
+
+stop
+
+@enduml

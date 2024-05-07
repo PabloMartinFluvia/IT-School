@@ -1,0 +1,43 @@
+@startuml
+
+object klondike
+
+object deck
+
+object waste
+
+object pileX
+
+object foundation1{
+DisplayedCards[] = 13
+}
+note left
+Has all the cards of the same suite.
+From As on bottom to King on top.
+end note
+
+
+'klondike dependencies'
+klondike *-down-> deck
+klondike *-down-> waste
+klondike *-down-> pileX
+note on link
+Idem all 7 piles
+end note
+klondike *-down-> foundation1
+note on link
+Idem all 4 foundations
+end note
+
+
+note as emptyNote
+All empty of cards
+end note
+
+deck .. emptyNote
+waste .. emptyNote
+pileX .. emptyNote
+
+
+
+@enduml

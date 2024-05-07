@@ -1,0 +1,45 @@
+@startuml
+
+object ":Klondike" as klondike
+
+object ":Deck" as deck{
+    HiddenCards[] = 24
+}
+
+object ":Waste" as waste{
+    DisplayedCards[] = 0
+}
+
+object ": Foundation" as foundation{
+    DisplayedCards[] = 0
+}
+
+object "pile1: Pile" as pile1{
+    DisplayedCards[] = 1
+    HiddenCards[] = 0
+}
+
+object "pile7: Pile" as pile7{
+    DisplayedCards[] = 1
+    HiddenCards[] = 6
+}
+
+'klondike dependencies'
+klondike *-down-> deck
+klondike *-down-> waste
+klondike *-down-> foundation
+note on link
+idem all 4 foundations
+end note
+klondike *-down-> pile1
+klondike *-down-> pile7
+
+note as pileNote
+All 7 piles have 1 displayed card on top.
+Under the displayed: each pile has
++1 hidden card vs previous pile.
+end note
+pile1..pileNote
+pile7..pileNote
+
+@enduml
