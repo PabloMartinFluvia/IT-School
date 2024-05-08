@@ -1,0 +1,23 @@
+@startuml
+
+start
+
+repeat
+
+:teacher starts new Module;
+
+repeat
+    :teacher explains new Unit theory;
+    :artist do task;
+    :critic review task;
+    :teacher review task;
+    :artist & critic do test;
+    :teacher review test;
+repeat while(isModuleCompleted) is (false)
+:student does exam;
+
+repeat while(isMPDSCompleted) is (false)
+
+stop
+
+@enduml
