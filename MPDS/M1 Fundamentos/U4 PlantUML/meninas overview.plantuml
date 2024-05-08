@@ -1,0 +1,24 @@
+@startuml
+
+class Context
+
+class Observer
+
+class Picture
+
+class Character
+enum PhysicalPosition{
+    INSIDE
+    OUTSIDE
+}
+
+Context *-down-> Observer
+Context *-down-> Picture
+
+Picture *-down-> "11" Character
+
+Observer -down-> PhysicalPosition : real position
+Character -down-> PhysicalPosition : real position
+Character -right-> "0..*" PhysicalPosition : eyesTarget real position
+
+@enduml

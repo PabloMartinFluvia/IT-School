@@ -1,0 +1,50 @@
+@startuml
+
+object context
+
+object "Las Meninas de Velázquez: Picture" as meninas
+object "me : Observer" as me
+object "OUTSIDE: PhysicalPosition" as outside
+object "INSIDE: PhysicalPosition" as inside
+object "king :Character" as king{
+    isReflected = true
+}
+object "queen :Character" as queen{
+    isReflected = true
+}
+
+object "other: Character" as other{
+    isReflected = false
+}
+note bottom
+As representation of the majority
+of remaining characters
+end note
+
+context *-down-> meninas
+context *-down-> me
+
+meninas *-down-> king
+meninas *-down-> queen
+meninas *-down-> other
+
+king -down-> outside : realPosition
+queen -down-> outside : realPosition
+me -down-> outside : realPosition
+
+other -down-> inside : realPosition
+
+king -down-> inside : eyes to
+queen -down-> inside : eyes to
+other -down-> outside : eyes to
+
+note as N1
+Same physical position.
+other(s) watches us.
+end note
+
+me .. N1
+king .. N1
+queen .. N1
+
+@enduml
