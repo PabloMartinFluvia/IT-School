@@ -1,0 +1,58 @@
+@startuml
+
+class MPDS
+class Teacher
+class Moderator
+abstract class Student
+class Viewer
+class Artist
+class Critic
+class Module
+class Unit
+abstract class Session
+class Theory
+class TaskReview
+class TestReview
+class Documentation
+class Task
+class Test
+class SolvedTask
+class SolvedTest
+
+
+MPDS *-down-> Teacher
+MPDS o-down-> Moderator
+MPDS o-down-> "0..N" Student
+MPDS *-down-> "6" Module
+Module *-down-> "1..N" Unit
+Unit *-down-> "4" Session
+Unit *-down-> "N" Task
+Unit *-down-> Test
+Session <|-down- Theory
+Session <|-down- TaskReview
+Session <|-down- TestReview
+Theory *-down-> Documentation
+
+Task o-down-> "N" SolvedTask
+Test o-down-> "N" SolvedTest
+TaskReview -right-> Task
+TestReview -right-> Test
+
+Teacher .down.> Module : directs
+Moderator .down.> Module: control
+Student .down.> Module: learn
+Student <|-down- Artist
+Student <|-down- Critic
+Student <|-down- Viewer
+
+Critic -down-> SolvedTask
+Artist -down-> SolvedTask
+
+Critic -down-> SolvedTest
+Artist -down-> SolvedTest
+
+Viewer .down.> "0..N" Task
+Viewer .down.> "0..N" Test
+
+
+@enduml
