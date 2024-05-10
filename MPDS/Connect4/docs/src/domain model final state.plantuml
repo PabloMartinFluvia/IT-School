@@ -48,10 +48,16 @@ column = 7
 }
 
 'tokens not placed'
-object "notPlaced :Token" as tokenRed{
+object "notPlaced :Token" as tokenRed1{
 Color = red
 }
-object "notPlaced :Token" as tokenYellow{
+object "notPlaced :Token" as tokenRed2{
+Color = red
+}
+object "notPlaced :Token" as tokenYellow1{
+Color = yellow
+}
+object "notPlaced :Token" as tokenYellow2{
 Color = yellow
 }
 
@@ -93,8 +99,10 @@ board *-down-> squareRed14
 board *---down---> squareRed13
 
 'player dependencies'
-playerRed -down-> "17" tokenRed
-playerYellow -down-> "18" tokenYellow
+playerRed -down-> tokenRed1
+playerRed -down-> tokenRed2
+playerYellow -down-> tokenYellow1
+playerYellow -down-> tokenYellow2
 
 'square dependencies'
 squareRed13 o-down-> tokenRed13
@@ -105,6 +113,18 @@ squareRed16 o-down-> tokenRed16
 squareYellow17 o-down-> tokenYellow17
 squareYellow27 o-down-> tokenYellow27
 squareYellow37 o-down-> tokenYellow37
+
+note as NYellow
+Idem all 18 remaining Player's tokens
+end note
+tokenYellow1..NYellow
+tokenYellow2..NYellow
+
+note as NRed
+Idem all 17 remaining Player's tokens
+end note
+tokenRed1..NRed
+tokenRed2..NRed
 
 
 'display squares position'

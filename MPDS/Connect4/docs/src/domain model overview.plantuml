@@ -20,29 +20,31 @@ class InInverseDiagonal
 class TokenPlaced
 
 'token & player color'
-abstract class Color
-class Red
-class Yellow
+enum Color{
+Red
+Yellow
+}
 
 'connect4 composites'
 Connect4 *-down-> "2" Player
 Connect4 *-down-> Turn
 Connect4 *-down-> Board
 Connect4 *-down-> "0..42" TokenPlaced
-Connect4 *-down-> "42" Token
+
 
 'player dependencies'
 Player -right-> Turn
 Player o-down-> Goal
 Player .down.-> "0..21" TokenPlaced
-Player -right-> "21" Token
-Player o-down-> Color
+Player -down-> Color
+Player -down-> "21" Token
 
 'board dependencies'
 Board *-down-> "6*7" Square
 
 'token placed event dependencies'
 TokenPlaced -right-> "0..1" Goal
+TokenPlaced -right->  Token
 TokenPlaced -right-> Square : target
 
 'goal dependencies'
@@ -56,10 +58,6 @@ Goal <|-down- InRow
 Goal <|-down- InColumn
 Goal <|-down- InDiagonal
 Goal <|-down- InInverseDiagonal
-
-'color children'
-Color <|-down- Red
-Color <|-down- Yellow
 
 'token dependencies'
 Token o-down-> Color

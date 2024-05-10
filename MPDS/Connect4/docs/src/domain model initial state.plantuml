@@ -34,10 +34,16 @@ token = empty
 }
 
 'tokens'
-object ":Token" as tokenRed{
+object ":Token" as tokenRed1{
 Color = red
 }
-object ":Token" as tokenYellow{
+object ":Token" as tokenRed2{
+Color = red
+}
+object ":Token" as tokenYellow1{
+Color = yellow
+}
+object ":Token" as tokenYellow2{
 Color = yellow
 }
 
@@ -53,8 +59,10 @@ board *-down-> square61
 board *-down-> square67
 
 'player dependencies'
-playerRed -down-> "21" tokenRed
-playerYellow -down-> "21" tokenYellow
+playerRed -down-> tokenRed1
+playerRed -down-> tokenRed2
+playerYellow -down-> tokenYellow1
+playerYellow -down-> tokenYellow2
 
 note as NEmpty
 All 6x7 board's squares are empty
@@ -63,5 +71,17 @@ square11..NEmpty
 square17..NEmpty
 square61..NEmpty
 square67..NEmpty
+
+note as NYellow
+Idem all 21 Player's tokens
+end note
+tokenYellow1..NYellow
+tokenYellow2..NYellow
+
+note as NRed
+Idem all 21 Player's tokens
+end note
+tokenRed1..NRed
+tokenRed2..NRed
 
 @enduml
