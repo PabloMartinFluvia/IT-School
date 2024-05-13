@@ -2,44 +2,75 @@
 
 object ":Klondike" as klondike
 
-object ":Deck" as deck{
-    HiddenCards[] = 24
+object ":Stock" as stock
+
+object ":Card" as cs1{
+    displayed = false
+}
+object ":Card" as cs2{
+    displayed = false
 }
 
-object ":Waste" as waste{
-    DisplayedCards[] = 0
+object ":Waste" as waste
+object ": Foundation" as foundation
+
+object "tableau1: Tableau" as tableau1
+
+object ":Card" as ct1d{
+    displayed = true
 }
 
-object ": Foundation" as foundation{
-    DisplayedCards[] = 0
-}
+object "tableau7: Tableau" as tableau7
 
-object "pile1: Pile" as pile1{
-    DisplayedCards[] = 1
-    HiddenCards[] = 0
+object ":Card" as ct2d{
+    displayed = true
 }
-
-object "pile7: Pile" as pile7{
-    DisplayedCards[] = 1
-    HiddenCards[] = 6
+object ":Card" as ct2h1{
+    displayed = false
+}
+object ":Card" as ct2h2{
+    displayed = false
 }
 
 'klondike dependencies'
-klondike *-down-> deck
+klondike *-down-> stock
 klondike *-down-> waste
 klondike *-down-> foundation
 note on link
 idem all 4 foundations
 end note
-klondike *-down-> pile1
-klondike *-down-> pile7
+klondike *-down-> tableau1
+klondike *-down-> tableau7
 
-note as pileNote
-All 7 piles have 1 displayed card on top.
-Under the displayed: each pile has
-+1 hidden card vs previous pile.
+note as tableauNote
+All 7 tableaus have 1 displayed card on top.
+Under the displayed: each tableau has
++1 hidden card vs previous tableau.
 end note
-pile1..pileNote
-pile7..pileNote
+tableau1..tableauNote
+tableau7..tableauNote
+
+'stock dependencies'
+stock o-down-> cs1
+stock o-down-> cs2
+
+note as stockNote
+The same for all 24 cards
+end note
+cs1..stockNote
+cs2..stockNote
+
+'tableau dependencies'
+tableau1 o-down-> ct1d
+
+tableau7 o-down-> ct2d
+tableau7 o-down-> ct2h1
+tableau7 o-down-> ct2h2
+
+note as hiddenNote
+tableau7 has 6 hidden cards
+end note
+ct2h1..hiddenNote
+ct2h2..hiddenNote
 
 @enduml

@@ -1,0 +1,80 @@
+@startuml
+
+class Klondike
+class Player
+
+class Stock
+class Waste
+class Tableau
+class Foundation
+
+class Card
+
+Klondike *-down-> Player
+Player .down.> "52..*" Movement
+
+abstract class Movement{
+    cardsUsed = 1
+}
+
+Movement -down-> Origin
+Movement -down-> Target
+Movement -down-> "*" Card
+
+abstract class Origin{
+    origin: Pile
+}
+
+abstract class Target{
+    target: Pile
+}
+
+abstract class FromWaste
+Origin <|-down- FromWaste
+FromWaste -down-> Waste
+
+abstract class ToFoundation
+Target <|-down- ToFoundation
+ToFoundation -down-> Foundation
+
+abstract class FromTableau
+Origin <|-down- FromTableau
+FromTableau -down-> Tableau
+
+abstract class ToTableau
+Target <|-down- ToTableau
+ToTableau -down-> Tableau
+
+class Stock_Waste
+Origin <|-down- Stock_Waste
+Target <|-down- Stock_Waste
+Stock_Waste -down-> Stock : origin
+Stock_Waste -down-> Waste : target
+
+class Waste_Stock{
+    cardsUsed = wasteSize
+}
+FromWaste <|-down- Waste_Stock
+Target <|-down- Waste_Stock
+Waste_Stock -down-> Stock : target
+
+class Waste_Tableau
+FromWaste <|-down- Waste_Tableau
+ToTableau <|-down- Waste_Tableau
+
+class Waste_Foundation
+FromWaste <|-down- Waste_Foundation
+ToFoundation <|-down- Waste_Foundation
+
+class Tableau_Foundation
+ToFoundation <|-down- Tableau_Foundation
+FromTableau <|-down- Tableau_Foundation
+
+class Tableau_Tableau{
+    cardsUsed = 1..13
+}
+FromTableau <|-down- Tableau_Tableau
+ToTableau <|-down- Tableau_Tableau
+
+@enduml
+

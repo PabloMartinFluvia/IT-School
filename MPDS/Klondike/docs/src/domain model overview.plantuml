@@ -2,108 +2,83 @@
 
 class Klondike
 class Player
-
 class Deck
-class Waste
-class Pile
-class Foundation
 
-class Card
-class HiddenCard
-class DisplayedCard
-class Suit
-class Color
+abstract class Pile{
+    {static} maxCards: num
+}
 
-abstract class CardMoved
-class DeckRestored
-class CardMovedToWaste
-abstract class ToPile
-class FromWasteToPile
-class FromPileToPile
-abstract class ToFoundation
-class FromWasteToFoundation
-class FromPileToFoundation
+class Stock{
+    {static} maxCards = 24
+}
+class Waste{
+    {static} maxCards = 24
+}
+class Tableau{
+    {static} maxCards = 19
+}
+class Foundation{
+    {static} maxCards = 13
+}
 
+class Card{
+    displayed: boolean
+}
 
+enum Rank{
+    A
+    2
+    ...
+    QUEEN
+    KING
+}
 
-'klondike dependencies'
+abstract class Suite
+class Spade{
+    {static} color = BLACK
+}
+class Heart{
+    {static} color = RED
+}
+class Club{
+    {static} color = BLACK
+}
+class Diamond{
+    {static} color = RED
+}
+
+enum Color{
+    RED
+    BLACK
+}
+
 Klondike *-down-> Player
-Klondike *-down-> "*" CardMoved
-Klondike *-down-> "4x13" Card
 Klondike *-down-> Deck
+Klondike *-down-> Stock
 Klondike *-down-> Waste
-Klondike *-down-> "7" Pile
+Klondike *-down-> "7" Tableau
 Klondike *-down-> "4" Foundation
 
-'Player dependencies'
-Player .down.> "52..*" CardMoved
+Deck *-down-> "52" Card
+Deck *-down-> Rank
+Deck *-down-> Color
+Deck *-down-> "4" Suite
 
-'Deck dependencies'
-Deck o-down-> "0..24" HiddenCard
-'Waste dependencies'
-Waste o-down-> "0..24" DisplayedCard
-'Pile dependencies'
-Pile o-down-> "0..6" HiddenCard
-Pile o-down-> "0..13" DisplayedCard
-'Foundation dependencies'
-Foundation o-down-> "0..13" DisplayedCard
-Foundation -down-> Suit
+Card -down-> Suite
+Card -down-> Rank
 
-'Card children'
-Card <|-down- HiddenCard
-Card <|-down- DisplayedCard
+Suite <|-down- Spade
+Suite <|-down- Heart
+Suite <|-down- Club
+Suite <|-down- Diamond
+Suite -down-> Color
 
-'Card dependencies'
-Card o-down-> Suit
+Pile o-down-> "*" Card
 
-'Suit dependencies'
-Suit o-down-> Color
+Pile <|-down- Stock
+Pile <|-down- Waste
+Pile <|-down- Tableau
+Pile <|-down- Foundation
 
-'CardMoved children'
-CardMoved <|-down- DeckRestored
-CardMoved <|-down- CardMovedToWaste
-CardMoved <|-down- ToPile
-CardMoved <|-down- ToFoundation
-
-'DeckRestored dependencies'
-DeckRestored -down-> Deck : target
-DeckRestored -down-> Waste : all cards
-DeckRestored .down.> "2..24" Card
-
-'CardMovedToWaste dependencies'
-CardMovedToWaste -down-> Waste : target
-CardMovedToWaste -down-> Deck : origin
-CardMovedToWaste .down.> Card
-
-'ToPile children"
-ToPile <|-down- FromWasteToPile
-ToPile <|-down- FromPileToPile
-
-'FromWasteToPile dependencies'
-FromWasteToPile .down.> Card
-FromWasteToPile -down-> Pile : target
-FromWasteToPile -down-> Waste : origin
-
-'FromPileToPile dependencies'
-FromPileToPile .down.> "1..12" Card
-FromPileToPile -down-> Pile : target
-FromPileToPile -down-> Pile : origin
-
-'ToFoundation children"
-ToFoundation <|-down- FromWasteToFoundation
-ToFoundation <|-down- FromPileToFoundation
-
-'FromWasteToFoundation dependencies'
-FromWasteToFoundation .down.> Card
-FromWasteToFoundation -down-> Foundation : target
-FromWasteToFoundation -down-> Waste : origin
-
-'FromPileToFoundation dependencies'
-FromPileToFoundation .down.>  Card
-FromPileToFoundation -down-> Foundation : target
-FromPileToFoundation -down-> Pile : origin
-
-
-'hidden dependencies'
 
 @enduml
