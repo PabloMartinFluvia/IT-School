@@ -29,7 +29,6 @@ Yellow
 Connect4 *-down-> "2" Player
 Connect4 *-down-> Turn
 Connect4 *-down-> Board
-Connect4 *-down-> "0..42" TokenPlaced
 
 
 'player dependencies'
@@ -60,6 +59,6 @@ Goal <|-down- InDiagonal
 Goal <|-down- InInverseDiagonal
 
 'token dependencies'
-Token o-down-> Color
+Token -down-> Color
 
 @enduml

@@ -6,6 +6,10 @@ end note
 
 object ":Connect4" as connect4
 object ":Board" as board
+note top
+    squares not drawed
+    are empty
+end note
 
 'players'
 object ":Player" as playerRed{
