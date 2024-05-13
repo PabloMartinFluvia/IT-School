@@ -53,6 +53,11 @@ enum Color{
 }
 
 Klondike *-down-> Player
+enum Color{
+    RED
+    BLACK
+}
+
 Klondike *-down-> Deck
 Klondike *-down-> Stock
 Klondike *-down-> Waste
