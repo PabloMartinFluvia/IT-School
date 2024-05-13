@@ -6,38 +6,40 @@ object deck
 
 object waste
 
-object pileX
+object tableauX
 
-object foundation1{
-DisplayedCards[] = 13
+object "foundationHeart :Foundation" as foundation1
+
+object "A :Card" as cA{
+    displayed = true
+    suite = HEART
 }
-note left
-Has all the cards of the same suite.
-From As on bottom to King on top.
-end note
-
+object "King :Card" as cK{
+    displayed = true
+    suite = HEART
+}
 
 'klondike dependencies'
 klondike *-down-> deck
 klondike *-down-> waste
-klondike *-down-> pileX
+klondike *-down-> tableauX
 note on link
-Idem all 7 piles
+Idem all 7 tableau
 end note
+
 klondike *-down-> foundation1
 note on link
-Idem all 4 foundations
+Same schema all 4 foundations
 end note
 
+foundation1 o-down-> cK
+foundation1 o-down-> cA
 
-note as emptyNote
-All empty of cards
+note as cardNote
+All suite's cards.
+Order: As in bottom to King on top
 end note
-
-deck .. emptyNote
-waste .. emptyNote
-pileX .. emptyNote
-
-
+cA..cardNote
+cK..cardNote
 
 @enduml
