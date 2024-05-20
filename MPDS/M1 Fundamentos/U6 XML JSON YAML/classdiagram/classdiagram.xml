@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<diagram>
+    <class id="c0">
+        <data type="normal">Class0</data>
+        <relation idref="c1" type="uso" cardinality="1..N"/>
+        <relation idref="c1" type="composición" cardinality="3"/>
+    </class>
+    <class id="c1">
+        <data type="normal">ClassN</data>
+        <relation idref="c2" type="herencia" cardinality="1"/>
+    </class>
+    <class id="c2">
+        <data type="abstraca">ClassA</data>
+        <relation idref="c3" type="implementación" cardinality="1"/>
+    </class>
+    <class id="c3">
+        <data type="interface">ClassI</data>
+    </class>
+    <!--
+        add more clases and relations (agregación y asociacion)
+        se podrían añadir información de los atributos y metodos de las clases
+    -->
+</diagram>
