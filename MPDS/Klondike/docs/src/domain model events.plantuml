@@ -11,43 +11,43 @@ class Foundation
 class Card
 
 Klondike *-down-> Player
-Player .down.> "52..*" Movement
+Player .down.> "4 x 13 .. N" Movement
 
 abstract class Movement{
     cardsUsed = 1
 }
 
-Movement -down-> Origin
-Movement -down-> Target
-Movement -down-> "*" Card
+Movement -down-> FromOrigin
+Movement -down-> ToTarget
+Movement -down-> "1..24" Card
 
-abstract class Origin{
+abstract class FromOrigin{
     origin: Pile
 }
 
-abstract class Target{
+abstract class ToTarget{
     target: Pile
 }
 
 abstract class FromWaste
-Origin <|-down- FromWaste
+FromOrigin <|-down- FromWaste
 FromWaste -down-> Waste
 
 abstract class ToFoundation
-Target <|-down- ToFoundation
+ToTarget <|-down- ToFoundation
 ToFoundation -down-> Foundation
 
 abstract class FromTableau
-Origin <|-down- FromTableau
+FromOrigin <|-down- FromTableau
 FromTableau -down-> Tableau
 
 abstract class ToTableau
-Target <|-down- ToTableau
+ToTarget <|-down- ToTableau
 ToTableau -down-> Tableau
 
 class Stock_Waste
-Origin <|-down- Stock_Waste
-Target <|-down- Stock_Waste
+FromOrigin <|-down- Stock_Waste
+ToTarget <|-down- Stock_Waste
 Stock_Waste -down-> Stock : origin
 Stock_Waste -down-> Waste : target
 
@@ -55,7 +55,7 @@ class Waste_Stock{
     cardsUsed = wasteSize
 }
 FromWaste <|-down- Waste_Stock
-Target <|-down- Waste_Stock
+ToTarget <|-down- Waste_Stock
 Waste_Stock -down-> Stock : target
 
 class Waste_Tableau

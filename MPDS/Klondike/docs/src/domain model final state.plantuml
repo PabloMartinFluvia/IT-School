@@ -10,13 +10,15 @@ object tableauX
 
 object "foundationHeart :Foundation" as foundation1
 
-object "A :Card" as cA{
+object ":Card" as cA{
     displayed = true
     suite = HEART
+    rank = A
 }
-object "King :Card" as cK{
+object ":Card" as cK{
     displayed = true
     suite = HEART
+    rank = King
 }
 
 'klondike dependencies'
@@ -37,7 +39,7 @@ foundation1 o-down-> cA
 
 note as cardNote
 All suite's cards.
-Order: As in bottom to King on top
+Order: Ace in bottom to King on top
 end note
 cA..cardNote
 cK..cardNote

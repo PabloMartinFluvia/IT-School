@@ -53,10 +53,6 @@ enum Color{
 }
 
 Klondike *-down-> Player
-enum Color{
-    RED
-    BLACK
-}
 
 Klondike *-down-> Deck
 Klondike *-down-> Stock
@@ -64,10 +60,7 @@ Klondike *-down-> Waste
 Klondike *-down-> "7" Tableau
 Klondike *-down-> "4" Foundation
 
-Deck *-down-> "52" Card
-Deck *-down-> Rank
-Deck *-down-> Color
-Deck *-down-> "4" Suite
+Deck *-down-> "4 x 13" Card
 
 Card -down-> Suite
 Card -down-> Rank

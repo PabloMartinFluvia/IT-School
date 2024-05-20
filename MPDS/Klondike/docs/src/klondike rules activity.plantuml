@@ -1,0 +1,20 @@
+@startuml
+
+start
+
+repeat
+    if (ToFoundationAvailable & !userIgnores) then (true)
+        :ToFoundationMovement;
+    elseif (ToTableauAvailable & !userIgnores) then (true)
+        :ToTableauMovement;
+    elseif (stockHasCards) then (true)
+        :FromStockToWasteMovement;
+    else (false)
+        :FromWasteToStockMovement;
+    endif
+
+repeat while (isWin | isSurrender) is (false)
+
+stop
+
+@enduml

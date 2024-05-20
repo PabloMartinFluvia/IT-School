@@ -18,12 +18,16 @@ object "tableau1: Tableau" as tableau1
 
 object ":Card" as ct1d{
     displayed = true
+    rank = random
+    suite = random
 }
 
 object "tableau7: Tableau" as tableau7
 
 object ":Card" as ct2d{
     displayed = true
+    rank = random
+    suite = random
 }
 object ":Card" as ct2h1{
     displayed = false
