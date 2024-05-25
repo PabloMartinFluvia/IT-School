@@ -11,9 +11,9 @@ c1 --> c2 : [up to player]
 c2 --> IN_GAME : [toFoundationMovementAvailable] / toFoundationMovement
 c2 --> IN_GAME : [toTableauMovementAvailable] / toTableauMovement
 c2 --> IN_GAME : [stockHasCards] / fromStockToWaste
-c2 --> IN_GAME : [else] / fromWasteToStock
+c2 --> IN_GAME : [stockIsEmpty] / fromWasteToStock
 IN_GAME --> [*] : [isWin]
 IN_GAME --> [*] : [isSurrender]
-IN_GAME --> c1 : [else]
+IN_GAME --> c1
 
 @enduml
