@@ -1,0 +1,47 @@
+@startuml
+
+class Software
+class Hardware
+class Firmware
+note bottom
+Software que se encarga
+de la comunicación entre
+el sistema operativo y
+el hardware.
+"Tapa una màquina"
+end note
+class Dataware
+note bottom
+almacén de datos o
+repositorio de datos
+"No se considera software"
+end note
+class Middleware
+note bottom
+software que se sitúa entre
+el sistema operativo y las
+aplicaciones que corren sobre él
+"Para muchas máquinas"
+end note
+class Peopleware
+note bottom
+es todo aquello que tenga
+relación con las personas
+en el desarrollo y en el
+uso de software y del hardware,
+es decir, en la interacción
+hombre-máquina.
+end note
+
+Hardware o-down-> Software
+Software <|-down- Firmware
+Software -down-> Dataware
+Software <|-down- Middleware
+
+Peopleware -left-> Hardware
+Peopleware -left-> Software
+
+
+Firmware -up-> Hardware
+
+@enduml
