@@ -32,9 +32,9 @@ Connect4 *-down-> Board
 
 
 'player dependencies'
-Player -right-> Turn
-Player o-down-> Goal
-Player .down.-> "0..21" TokenPlaced
+Player -left-> Turn
+Player -right-> Board
+Player -down-> Goal
 Player -down-> Color
 Player -down-> "21" Token
 
@@ -42,12 +42,11 @@ Player -down-> "21" Token
 Board *-down-> "6*7" Square
 
 'token placed event dependencies'
-TokenPlaced -right-> "0..1" Goal
 TokenPlaced -right->  Token
 TokenPlaced -right-> Square : target
 
 'goal dependencies'
-Goal -right-> "4" Square
+Goal .down.-> "4..21" TokenPlaced
 
 'square dependencies'
 Square o-down-> "0..1" Token
