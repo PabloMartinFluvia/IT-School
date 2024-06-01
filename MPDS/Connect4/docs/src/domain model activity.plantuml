@@ -3,6 +3,11 @@ start
 
 repeat
     :player A places token;
+    :player B places token;
+repeat while (tokens placed on board < 6) is (true)
+
+repeat
+    :player A places token;
     if(isConnect4PlayerA) then (false)
         :player B places token;
     endif

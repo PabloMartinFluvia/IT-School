@@ -21,8 +21,8 @@ class TokenPlaced
 
 'token & player color'
 enum Color{
-Red
-Yellow
+red
+yellow
 }
 
 'connect4 composites'
@@ -30,13 +30,14 @@ Connect4 *-down-> "2" Player
 Connect4 *-down-> Turn
 Connect4 *-down-> Board
 
+'turn dependencies'
+Turn -right-> Player
 
 'player dependencies'
-Player -left-> Turn
 Player -right-> Board
 Player -down-> Goal
 Player -down-> Color
-Player -down-> "21" Token
+Player -down-> "6x7/2" Token
 
 'board dependencies'
 Board *-down-> "6*7" Square
@@ -46,7 +47,7 @@ TokenPlaced -right->  Token
 TokenPlaced -right-> Square : target
 
 'goal dependencies'
-Goal .down.-> "4..21" TokenPlaced
+Goal .down.-> "4..6x7/2" TokenPlaced
 
 'square dependencies'
 Square o-down-> "0..1" Token

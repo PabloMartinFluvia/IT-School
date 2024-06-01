@@ -11,6 +11,10 @@ note top
     are empty
 end note
 
+object ":Turn" as turn{
+Player = null
+}
+
 'players'
 object ":Player" as playerRed{
 Color = red
@@ -90,6 +94,7 @@ Color = yellow
 
 'connect4 dependencies'
 connect4 *-down-> board
+connect4 *-down-> turn
 connect4 *-down-> playerRed
 connect4 *-down-> playerYellow
 
@@ -129,6 +134,13 @@ Idem all 17 remaining Player's tokens
 end note
 tokenRed1..NRed
 tokenRed2..NRed
+
+note as NoteTokenPlaced
+are still associated to
+their respective placed tokens
+end note
+playerRed..NoteTokenPlaced
+playerYellow..NoteTokenPlaced
 
 
 'display squares position'

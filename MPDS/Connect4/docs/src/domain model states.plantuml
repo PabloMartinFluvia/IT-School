@@ -1,25 +1,30 @@
 @startuml
 
-state e0
-state e1
-state c0 <<choice>>
-state e2
+state " " as e0
+state " " as e1
+state " " as e2
+state " " as e3
 state c1 <<choice>>
-state e3
+state " " as e4
 
 
 [*] --> e0
-e0 --> e1 : place token playerA
-e1 --> c0 : [board contains 7 tokens]
-e1 --> e0 : place token playerB
-c0 --> [*] : [playerA wins]
-c0 --> e2 : [else]
-e2 --> c1 : place token playerB
+e0 --> e1 : place token playerA in valid square
+e1 --> e2 : [board contains 7 tokens]
+e1 --> e0 : place token playerB in valid square
+e2 --> [*] : [playerA wins]
+e2 --> e3 : [else]
+e3 --> c1 : place token playerB in valid square
 c1 --> [*] : [playerB wins]
 c1 --> [*]: [board is full & ! playerB wins]
-c1 --> e3 : [else]
-e3 --> c0 : place token playerA
+c1 --> e4 : [else]
+e4--> e2 : place token playerA in valid square
 
+note as ruleNote
+valid square ::=
+square is empty &&
+(square row = 1 {bottom row} || square in row-1 has token placed)
+end note
 
 
 

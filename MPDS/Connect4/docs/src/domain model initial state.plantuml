@@ -2,6 +2,7 @@
 
 object ":Connect4" as connect4
 object ":Board" as board
+object ":Turn" as turn
 
 'players'
 object ":Player" as playerRed{
@@ -45,8 +46,12 @@ Color = yellow
 
 'connect4 dependencies'
 connect4 *-down-> board
+connect4 *-down-> turn
 connect4 *-down-> playerRed
 connect4 *-down-> playerYellow
+
+'turn dependencies'
+turn -right-> playerRed
 
 'board dependencies'
 board *-down-> square11
