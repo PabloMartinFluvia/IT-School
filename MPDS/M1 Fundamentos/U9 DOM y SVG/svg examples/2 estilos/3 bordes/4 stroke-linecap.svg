@@ -1,0 +1,9 @@
+<svg width="150px" height="150px" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <!-- forma final de los extremos-->
+    <!--extendido-->
+    <path d="M50 25 H100 V75 H50 Z" stroke="green" stroke-width="5" stroke-dasharray="50 50" stroke-linecap="square" fill="red"/>
+    <!-- cortado al final-->
+    <path d="M75 50 L50 125 H100 Z" stroke="blue" stroke-width="5" stroke-dasharray="5 2" stroke-linecap="butt" fill="none"/>
+    <!--redondeado al final-->
+    <path d="M25 125 L50 175 L75 125 L100 175 L125 125" stroke="grey" stroke-width="5" stroke-dasharray="10 5" stroke-linecap="round" fill="none"/>
+</svg>

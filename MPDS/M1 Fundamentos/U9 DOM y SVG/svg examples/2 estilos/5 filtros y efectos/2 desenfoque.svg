@@ -1,0 +1,15 @@
+<svg width="150px" height="150px" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <filter id="blurFilter" y="-5" height="40">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="3" y="-" />
+        </filter>
+        <filter id="offsetFilter" y="-5" height="5">
+            <feOffset result="offOut" in="SourceAlpha" dx="20" dy="20" />
+        </filter>
+
+    </defs>
+    <!--desenfoque gausiano -->
+    <path d="M50 25 H100 V75 H50 Z" stroke="green" fill="red" filter="url(#blurFilter)" />
+    <!--desenfoque total -> desaparece -->
+    <path d="M75 50 L50 125 H100 Z" stroke="blue" fill="green" filter="url(#offsetFilter)"/>
+</svg>
