@@ -1,0 +1,12 @@
+@startuml
+participant ":Player" as player
+participant ":Stock" as stock
+participant ":Waste" as waste
+
+alt !stock.isEmpty
+    player -> stock : getTopCard
+    stock -> player : return card
+    player -> waste : putOnTop(card)
+end
+
+@enduml

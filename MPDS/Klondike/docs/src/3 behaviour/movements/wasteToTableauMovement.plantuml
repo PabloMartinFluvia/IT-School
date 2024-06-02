@@ -1,0 +1,26 @@
+@startuml
+participant ":Player" as player
+participant ":Waste" as waste
+participant ":Tableau" as tableau
+
+
+alt !waste.isEmpty
+    player -> waste : getTopCard
+    waste -> player : return card
+
+    alt Note: Tableau condition
+        player -> tableau : putOnTop(card)
+    else
+        player -> waste : putOnTop(card)
+    end
+
+end
+note right
+<b>Tableau condition:</b>
+tableau.isEmpty & card.rank = KING
+OR
+!tableau.isEmpty & tableau.top.(color != card.color & rank = card.rank + 1)
+end note
+
+
+@enduml

@@ -35,16 +35,16 @@ enum Rank{
 
 abstract class Suite
 class Spade{
-    {static} color = BLACK
+    Color = BLACK
 }
 class Heart{
-    {static} color = RED
+    Color = RED
 }
 class Club{
-    {static} color = BLACK
+    Color = BLACK
 }
 class Diamond{
-    {static} color = RED
+    Color = RED
 }
 
 enum Color{
@@ -52,15 +52,18 @@ enum Color{
     BLACK
 }
 
-Klondike *-down-> Player
-
 Klondike *-down-> Deck
 Klondike *-down-> Stock
 Klondike *-down-> Waste
 Klondike *-down-> "7" Tableau
 Klondike *-down-> "4" Foundation
 
-Deck *-down-> "4 x 13" Card
+Klondike *-down-> Player
+
+Player .-down.-> Card
+Player .-down.-> Pile
+
+Deck *-down-> "13 x 4" Card
 
 Card -down-> Suite
 Card -down-> Rank
@@ -71,7 +74,7 @@ Suite <|-down- Club
 Suite <|-down- Diamond
 Suite -down-> Color
 
-Pile o-down-> "*" Card
+Pile o--down--> "*" Card
 
 Pile <|-down- Stock
 Pile <|-down- Waste

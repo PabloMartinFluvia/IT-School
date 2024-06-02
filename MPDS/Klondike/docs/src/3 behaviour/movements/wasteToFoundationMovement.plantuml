@@ -1,0 +1,26 @@
+@startuml
+participant ":Player" as player
+participant ":Waste" as waste
+participant ":Foundation" as foundation
+
+
+alt !waste.isEmpty
+    player -> waste : getTopCard
+    waste -> player : return card
+
+    alt Note: Foundation condition
+        player -> foundation : putOnTop(card)
+    else
+        player -> waste : putOnTop(card)
+    end
+
+end
+note right
+<b>Foundation condition:</b>
+foundation.isEmpty & card.rank = ACE
+OR
+!foundation.isEmpty & foundation.top.(suite = card.suite & rank = card.rank - 1)
+end note
+
+
+@enduml

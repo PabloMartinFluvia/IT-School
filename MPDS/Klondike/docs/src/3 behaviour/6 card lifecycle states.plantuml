@@ -1,0 +1,74 @@
+@startuml
+
+[*] --> IN_DECK
+state IN_DECK
+state dealChoice <<choice>>
+IN_DECK --> dealChoice : shuffle
+dealChoice --> IN_TABLEAU : [card in 28 first]
+dealChoice --> IN_STOCK
+
+state IN_STOCK
+state stockToWasteCondition <<choice>>
+IN_STOCK --> stockToWasteCondition : [card = stock.top]
+stockToWasteCondition --> IN_WASTE : stockToWasteMovement
+
+state IN_WASTE
+state wasteToStockCondition <<choice>>
+IN_WASTE --> wasteToStockCondition : [stock.isEmpty]
+wasteToStockCondition --> IN_STOCK : wasteToStockMovement
+state wasteToTableauCondition <<choice>>
+IN_WASTE --> wasteToTableauCondition : [Note: ToTableauCondition]
+wasteToTableauCondition --> IN_TABLEAU : wasteToTableauMovement
+state wasteToFoundationCondition <<choice>>
+IN_WASTE --> wasteToFoundationCondition : [Note: ToFoundationCondition]
+wasteToFoundationCondition --> IN_FOUNDATION : wasteToFoundationMovement
+
+state IN_TABLEAU
+state tableauToFoundationCondition <<choice>>
+IN_TABLEAU --> tableauToFoundationCondition : [Note: ToFoundationCondition]
+tableauToFoundationCondition --> IN_FOUNDATION : tableauToFoundationMovement
+state tableauToTableauCondition <<choice>>
+IN_TABLEAU --> tableauToTableauCondition : [Note: TableauChangeCondition]
+note top
+<b>TableauChange condition:</b>
+// cards: player choose N top displayed cards to move
+cards.contains(card)
+AND{
+    target.isEmpty & cards.bottom.rank = KING
+    OR
+    !target.isEmpty & target.top.(color != cards.bottom.color & rank = cards.bottom.rank + 1)
+}
+end note
+tableauToTableauCondition --> IN_TABLEAU : tableauToTableauMovement
+
+state IN_FOUNDATION
+state foundationToTableauCondition <<choice>>
+IN_FOUNDATION --> foundationToTableauCondition : [Note: ToTableauCondition]
+foundationToTableauCondition --> IN_TABLEAU : foundationToTableauMovement
+IN_FOUNDATION --> [*] : [all cards in foundation | player resigned]
+
+note as ToFoundationCondition
+<b>ToFoundation condition:</b>
+card = actualPile.top
+AND
+{
+    targetFoundation.isEmpty & card.rank = ACE
+    OR
+    !targetFoundation.isEmpty & targetFoundation.top.(suite = card.suite & rank = card.rank - 1)
+}
+end note
+
+note bottom
+<b>ToTableau condition:</b>
+card = actualPile.top
+AND
+{
+    targetTableau.isEmpty & card.rank = KING
+    OR
+    !targetTableau.isEmpty & targetTableau.top.(color != card.color & rank = card.rank + 1)
+}
+end note
+
+
+
+@enduml

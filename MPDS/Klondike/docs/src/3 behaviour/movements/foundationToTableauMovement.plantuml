@@ -1,0 +1,24 @@
+@startuml
+participant ":Player" as player
+participant ":Foundation" as foundation
+participant ":Tableau" as tableau
+
+alt !foundation.isEmpty
+    player -> foundation : getTopCard
+    foundation -> player : return card
+
+    alt Note: TargetTableau condition
+        player -> tableau : putOnTop(card)
+    else
+        player -> foundation : putOnTop(card)
+    end
+
+end
+note right
+<b>TargetTableau condition:</b>
+tableau.isEmpty & card.rank = KING
+OR
+!tableau.isEmpty & tableau.top.(color != card.color & rank = card.rank + 1)
+end note
+
+@enduml

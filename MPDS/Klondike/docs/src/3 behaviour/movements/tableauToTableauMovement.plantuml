@@ -1,0 +1,33 @@
+@startuml
+participant ":Player" as player
+participant "origin :Tableau" as origin
+participant "target :Tableau" as target
+
+alt !origin.isEmpty
+    player -> origin : getTopDisplayeds(numCardsToMove)
+    alt numCardsToMove <= origin.displayeds.size
+        origin -> player : return cards
+
+        alt Note: TargetTableau condition
+            player -> target : putOnTop(cards)
+
+            alt !origin.isEmpty
+                player -> origin : displayTopCard
+            end
+
+        else
+            player -> origin : putOnTop(cards)
+        end
+    else
+        origin -> player : return empty cards
+    end
+
+end
+note right
+<b>TargetTableau condition:</b>
+target.isEmpty & cards.bottom.rank = KING
+OR
+!target.isEmpty & target.top.(color != cards.bottom.color & rank = cards.bottom.rank + 1)
+end note
+
+@enduml

@@ -1,0 +1,29 @@
+@startuml
+participant ":Player" as player
+participant ":Tableau" as tableau
+participant ":Foundation" as foundation
+
+
+alt !tableau.isEmpty
+    player -> tableau : getTopCard
+    tableau -> player : return card
+
+    alt Note: Foundation condition
+        player -> foundation : putOnTop(card)
+        alt !tableau.isEmpty
+            player -> tableau : displayTopCard
+        end
+    else
+        player -> tableau : putOnTop(card)
+    end
+
+end
+note right
+<b>Foundation condition:</b>
+foundation.isEmpty & card.rank = ACE
+OR
+!foundation.isEmpty & foundation.top.(suite = card.suite & rank = card.rank - 1)
+end note
+
+
+@enduml

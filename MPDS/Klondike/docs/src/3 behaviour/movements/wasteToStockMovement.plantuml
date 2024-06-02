@@ -1,0 +1,12 @@
+@startuml
+participant ":Player" as player
+participant ":Waste" as waste
+participant ":Stock" as stock
+
+alt stock.isEmpty
+    player -> waste : getAll
+    waste -> player : return cards
+    player -> stock : putAll(cards)
+end
+
+@enduml

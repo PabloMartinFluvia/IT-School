@@ -1,0 +1,25 @@
+@startuml
+start
+    :shuffle;
+    :deal;
+    repeat
+        if (up to player)
+            :stockToWasteMovement;
+        elseif (up to player)
+            :wasteToTableauMovement;
+        elseif (up to player)
+            :wasteToFoundationMovement;
+        elseif (up to player)
+            :wasteToStockMovement;
+        elseif (up to player)
+            :tableauToTableauMovement;
+        elseif (up to player)
+            :tableauToFoundationMovement;
+        elseif (up to player)
+            :foundationToTableauMovement;
+        else
+            :resign;
+        endif
+    repeat while (allCardsInFoundation || player resigned) is (false)
+stop
+@enduml

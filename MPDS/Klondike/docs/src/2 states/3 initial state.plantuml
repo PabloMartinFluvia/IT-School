@@ -6,9 +6,13 @@ object ":Stock" as stock
 
 object ":Card" as cs1{
     displayed = false
+    rank = random
+    suite = random
 }
 object ":Card" as cs2{
     displayed = false
+    rank = random
+    suite = random
 }
 
 object ":Waste" as waste
@@ -31,9 +35,13 @@ object ":Card" as ct2d{
 }
 object ":Card" as ct2h1{
     displayed = false
+    rank = random
+    suite = random
 }
 object ":Card" as ct2h2{
     displayed = false
+    rank = random
+    suite = random
 }
 
 'klondike dependencies'
