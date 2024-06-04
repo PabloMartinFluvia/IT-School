@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Marcos</title>
+    </head>
+    <body>
+        <!-- un hiperenlace Si visible-->
+        <iframe height="700px" width="80%" src="https://www.upm.es" name="miFrame"></iframe>
+
+        <!-- 2 hiperenlaces NO visibles, pero que al abrirlos se abren en el iframe-->
+        <a href="https://www.urjc.es" target="miFrame" title="URJC home">URJC</a>
+        <a href="https://www.upm.es" target="miFrame" title="UMP home">UPM</a>
+    </body>
+</html>
+
+<!--
+Elemento iframes con atributos:
+    src para la URL del destino
+    width para el ancho de visualización
+    height para el alto de visualización
+    target como en el elemento base -> como se abre el enlace
+    name para ser referenciado desde el valor de un atributo target de otro enlace
+-->

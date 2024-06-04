@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tablas</title>
+  </head>
+  <body>
+    <table>
+      <caption> <!-- titulo de la tabla -->
+        Lenguajes de Programación
+      </caption>
+      <colgroup> <!-- para definir distintos grupos de columnas (y así poderlas manipular por separado)-->
+        <col />
+        <col span="3" />
+      </colgroup>
+      <thead> <!-- titulo de las columnas-->
+        <tr>
+          <th>Paradigma</th>
+          <th>Lenguaje</th>
+          <th colspan="2">Autor</th> <!-- define que esta celda ocupe 2 columnas -->
+        </tr>
+      </thead>
+      <tbody> <!--cuerpo de la tabla-->
+        <tr>
+          <td>Imperativo</td>
+          <td>C</td>
+          <td colspan="2">Dennis Ritchie</td> <!-- define que esta celda ocupe 2 columnas -->
+        </tr>
+        <tr>
+          <td rowspan="2">Orientado a Objetos</td> <!-- define que esta celda ocupe 2 filas -->
+          <td>Objective C</td>
+          <td>Brad Cox</td>
+          <td>Tom Love</td>
+          <!-- en esta fila no hay colspan, ya que hay 4 celdas (y no hace falta)-->
+        </tr>
+        <tr>
+          <!-- la siguiente celda se coloca en la segunda columna, ya que la primera columna está
+          ocupada por el elemento de la celda de la primera columna de la fila anterior (deinido para
+          que ocupara 2 filas-->
+          <td>C++</td>
+          <td colspan="2">Barjne Stroustrup</td> <!-- define que esta celda ocupe 2 columnas -->
+        </tr>
+      </tbody>
+      <tfoot> <!-- fila final-->
+        <tr>
+          <td>2 paradigmas</td>
+          <td>3 lenguajes</td>
+          <td colspan="2">4 autores</td>
+        </tr>
+      </tfoot>
+    </table>
+  </body>
+</html>
+
+<!--
+Elemento table para tablas con contenido:
+  elemento caption, opcional como primer elemento, con contenido para el subtítulo de la tabla
+  elemento colgroup, opcional tras caption, para la definición de grupos de columnas para su formato:
+    elemento col con atributo span para especificar la cardinalidad del grupo
+  elemento tr, de table row, con contenido:
+    elemento td, de table standard, para cada celda estandard de la fila
+      con contenido de información u otra estructura
+    elemento th, de table head, para cada celda destacada de la fila con
+      contenido de información u otra estructura
+    ambos dos con atributos:
+      colspan con el valor numérico de la cantidad de celdas de la misma
+         fila agrupadas en una única a partir del elemento
+      rowspan con el valor numérico de la cantidad de celdas de la misma
+         columna agrupada en una única a partir del elemento
+  elemento thead, opcional, con contenido de
+    elemento tr para la cabecera de la tabla, títulos a repetir en cada página impresa
+  elemento tbody, opcional, con contenido
+    elementos tr para el cuerpo de la tabla, detalles de la información
+  elemento tfoot, opcional, con contenido
+    elemento tr para el del pie de la tabla, resúmenes a repetir en cada página impresa
+-->

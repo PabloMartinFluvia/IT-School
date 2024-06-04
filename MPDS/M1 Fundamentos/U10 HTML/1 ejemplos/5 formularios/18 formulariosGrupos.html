@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Formularios con agrupaciones</title>
+  </head>
+  <body>
+    <form action="http://www.blablabla.com/script.php">
+      <fieldset> <!-- para agrupar un conjunto de entradas-->
+        <legend>Titulo</legend>
+        <label for="campo1">Campo 1:</label>
+        <input
+          id="campo1"
+          type="text"
+          name="campo1"
+          value="texto por defecto"
+        />
+        <br />
+        <label for="campo2">Campo 2:</label>
+        <input
+          id="campo2"
+          type="password"
+          name="campo2"
+        />
+        <br />
+      </fieldset>
+      <input type="submit" name="enviar" value="enviar valores" />
+      <input type="reset" name="borrar" value="borrar valores" />
+    </form>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<!--
+Elemento head, obligatorio en la especificaciión, en los navegadores!?!, con los elementos:
+    title, con contenido del título de la página en la pestaña del navegador, …​
+    meta, para diversa metainformación, con atributos:
+        charset, para conjunto de caracteres Unicode: UTF-8, UTF-16, …​
+        name, para otra metainformación con valor abierto: description, keywords, author, …​
+        content, para la otra información con valor abierto
+    base, para dirección base por defecto de todos los hiperenlaces, con atributos:
+        href, para la URL
+        target, para destino por defecto: blank_ en la misma pestaña, self_ en
+           el mismo marco, parent_ en el marco padre, top_ en el cuerpo
+    Estilos con CSS
+    Dinamismo con JavaScript
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Título</title>
+
+    <!--
+    es curiós que la etiqueta <meta> només sigui per a algunes coses:
+    no es TOT el continugt de head per a metainformació?
+    -->
+        <meta charset="UTF-8">
+
+    <!-- ajuda al posicionament SEO-->
+        <meta name="description" content="bla bla bla">
+        <meta name="keywords" content="key, key, ...">
+        <meta name="author" content="Yo">
+
+    <!-- per afegir a les urls RELATIVES (./etc) indicades dins del body
+        -> reusabilidad
+     -->
+        <base href="https://www.upm.es/" target="_blank">
+
+    <!--- estilos con CSS -->
+    <!--- dinámica con JavaScript -->
+    </head>
+    <body>
+    ...
+    </body>
+</html>

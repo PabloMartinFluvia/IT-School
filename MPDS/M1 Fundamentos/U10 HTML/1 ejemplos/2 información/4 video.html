@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Video</title>
+    </head>
+    <body>
+        <video controls loop autoplay width="100%">
+
+            <!--
+            en la etiqueta source està el atributo source XD
+            en este caso la url és una ruta relativa
+            -->
+            <source src="Erich.mp4" type="audio/mp4"/>
+
+            Tu navegador no soporta el formato de video
+        </video>
+    </body>
+</html>
+
+<!--
+Elemento video con atributos:
+    autoplay, sin valor, para reproducir al cargar la página
+    controls, sin valor, para visualizar los controles
+    loop, sin valor, para reproducir en bucle
+    width, para el ancho en pixels
+    height, para el alto en pixels
+y con contenido:
+    elemento source, para distintos formatos, con atributos:
+        src para la URL del sonido
+        type para el tipo de formato
+        …​
+    texto para visualizar en el caso de que el navegador no pueda reproducir el formato de sonido
+-->

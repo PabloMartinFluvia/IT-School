@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Audio</title>
+    </head>
+    <body>
+        <audio controls loop autoplay>
+
+            <!--
+            en la etiqueta source està el atributo source XD
+            en este caso la url és una ruta relativa
+            -->
+            <source src="se_esta_perdiendo.mp3" type="audio/mpeg" />
+
+            Tu navegador no soporta el formato de audio
+        </audio>
+    </body>
+</html>
+
+<!--
+Elemento audio con atributos:
+    autoplay, sin valor, para reproducir al cargar la página
+    controls, sin valor, para visualizar los controles
+    loop, sin valor, para reproducir en bucle
+y con contenido:
+    elemento source, para distintos formatos, con atributos:
+        src para la URL del sonido
+        type para el tipo de formato
+        …​
+    texto para visualizar en el caso de que el navegador no pueda reproducir el formato de sonido
+-->
